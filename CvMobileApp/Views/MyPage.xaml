@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
+    x:Class="CvMobileApp.Views.MyPage"
+    BackgroundColor="#f0f0f0">
+        <ScrollView>
+       
+         <!--Main layout-->
+       <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <!--Timeline Color Bar-->
+            <Frame Grid.Row="0" BackgroundColor="{StaticResource MainColor}" HeightRequest="100" CornerRadius="20" HasShadow="False" Margin="0,-50,0,0"/>
+             <!--Rounded image - SfAvatarView Syncfusion Control-->
+            <sfavatar:SfAvatarView Grid.Row="1" BorderWidth="0"
+                ContentType="Custom" ImageSource="Profile" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="140" HeightRequest="140" CornerRadius="70" Margin="0,-65,0,0" />
+             <!--Name-->
+            <Label Grid.Row="2" Text="John Doe" FontAttributes="Bold" HorizontalOptions="Center" FontSize="22" Margin="0,10,0,0"/>
+             <!--Role Description-->
+            <Label Grid.Row="3" Text="UI/UX Design Student of Purwadhika&#10;Startup * Coding School" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="#a7a7a7" FontSize="15" Margin="0,10,0,0"/>
+            <Grid Grid.Row="4" RowDefinitions="*,*" ColumnDefinitions="Auto,Auto,Auto,Auto" HorizontalOptions="Center"  Padding="0,25" RowSpacing="20" ColumnSpacing="10">
+                <Image Grid.Row="0" Grid.Column="0" Source="Calendar" HeightRequest="14"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="January 1st, 1990" FontSize="14" FontAttributes="Bold" TextColor="#a7a7a7"/>
+
+                <Image Grid.Row="0" Grid.Column="2" Source="Phone" HeightRequest="14"/>
+                <Label Grid.Row="0" Grid.Column="3" Text="0812 3456 789" FontSize="14" FontAttributes="Bold" TextColor="#a7a7a7"/>
+
+                <Image Grid.Row="1" Grid.Column="0" Source="Home" HeightRequest="14"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="Jarkarta, Indonesia" FontSize="14" FontAttributes="Bold" TextColor="#a7a7a7"/>
+
+                <Image Grid.Row="1" Grid.Column="2" Source="Email" HeightRequest="14"/>
+                <Label Grid.Row="1" Grid.Column="3" Text="john@doe.com" FontSize="14" FontAttributes="Bold" TextColor="#a7a7a7"/>
+            </Grid>
+
+           <!--Line and descripcion-->
+           <BoxView Grid.Row="5" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Silver" Margin="20,0"/>
+           <Label Grid.Row="6" FontSize="14" FontAttributes="Bold" TextColor="#a7a7a7"  Margin="20" LineHeight="1.2" HorizontalTextAlignment="Center" Text="Hello! I'm John, an architect-turned-UI/UX designer with a passion for technology. I am currently learning UI/UX design at Purwadhika School"/>
+
+           <!-- Education-->
+           <Frame Grid.Row="8" HasShadow="False" Margin="25,0" CornerRadius="20" BackgroundColor="White">
+               <StackLayout>
+                   <!-- Education title-->
+                   <Label Text="Education" FontSize="15" FontAttributes="Bold" Margin="0,0,0,10"/>
+                    <!-- Divisor line-->
+                   <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Silver" Margin="0,0,0,10" />
+
+                   <CollectionView ItemsSource="{Binding EducationCollection}"
+                                   HeightRequest="170" 
+                                   VerticalScrollBarVisibility="Never">
+                                  <CollectionView.ItemTemplate>
+                                      <DataTemplate>
+                                       <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*" Padding="0,0,0,30" >
+                                           <sfavatar:SfAvatarView Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" BorderWidth="0" Margin="0,0,10,0"
+                                            ContentType="Custom" ImageSource="{Binding Picture}" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="50" HeightRequest="50" CornerRadius="25" />
+                                           <Label Grid.Row="0" Grid.Column="1" Text="{Binding Title}" FontAttributes="Bold" FontSize="14"/>
+                                           <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" FontSize="13"/>
+                                           <Label Grid.Row="2" Grid.Column="1" Text="{Binding Years}" FontSize="13"/> 
+                                       </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                   </CollectionView>
+               </StackLayout>
+           </Frame>
+
+
+            <!--Skills-->
+           <Frame Grid.Row="9" HasShadow="False" Margin="20,30" CornerRadius="20" BackgroundColor="White">
+               <StackLayout>
+                   <Label Text="Skills" FontSize="15" FontAttributes="Bold" Margin="0,0,0,10"/>
+                   <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Silver" />
+
+                    <CollectionView ItemsSource="{Binding SkillsCollection}"
+                                   HeightRequest="300" 
+                                   VerticalScrollBarVisibility="Never">
+                                  <CollectionView.ItemTemplate>
+                                      <DataTemplate>
+                                       <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*" Padding="0,0,0,30">
+                                           <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Margin="0,0,10,0" Source="{Binding Picture}"
+                                                  VerticalOptions="Start" WidthRequest="50" HeightRequest="50" />
+                                           <Label Grid.Row="0" Grid.Column="1" Text="{Binding Title}" FontAttributes="Bold" FontSize="14"/>
+                                           <ProgressBar Grid.Row="1" Grid.Column="1" Progress="{Binding Percentage}" ProgressColor="Blue"/>
+                                       </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                   </CollectionView>
+               </StackLayout>
+           </Frame>
+
+       </Grid>
+    </ScrollView>
+</ContentPage>
