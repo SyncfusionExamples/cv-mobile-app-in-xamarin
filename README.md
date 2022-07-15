@@ -13,3 +13,5 @@ This repository has the Xamarin UI project that replicate a CV Mobile App.
 * Restore the NuGet packages by rebuilding the solution.
 * Run the project.
 
+## Blog reference
+[Replicating a CV Mobile App in Xamarin.Forms](https://www.syncfusion.com/blogs/post/replicating-a-cv-mobile-app-in-xamarin-forms.aspx)
